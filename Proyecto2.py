@@ -44,23 +44,23 @@ def gris (p:pixel) -> np.uint8:
     resultado = np.uint8(promedio)
     if resultado==0:
         return np.uint8(0)
-    if resultado<=26:
+    if resultado<=39:
         return np.uint8(26)
-    if resultado<=52:
+    if resultado<=65:
         return np.uint8(52)
-    if resultado<=77:
+    if resultado<=90:
         return np.uint8(77)
-    if resultado<=102:
+    if resultado<=115:
         return np.uint8(102)
-    if resultado<=128:
+    if resultado<=141:
         return np.uint8(128)
-    if resultado<=153:
+    if resultado<=167:
         return np.uint8(153)
-    if resultado<=180:
+    if resultado<=192:
         return np.uint8(180)
-    if resultado<=204:
+    if resultado<=218:
         return np.uint8(204)
-    if resultado<=231:
+    if resultado<=254:
         return np.uint8(231)
     if resultado==255:
         return np.uint8(255)
@@ -85,10 +85,24 @@ def TablaSuma(A):
     pass
 
 def reduccionSumas1(A, S:np.ndarray, w:int, h:int) :
-    pass
+    a = np.empty((h,w), np.uint8)
+    H, W = A.shape
+    ph, pw = H // h, W // w
+    nbp = ph * pw
+    for I in range(0, H, ph):
+        for J in range(0, W, pw):
+            X = (S[I+ph, J+pw] -  S[I+ph, J]) - (S[I, J+pw] - S[I, J])
+            a[I // ph, J // pw] = round(X / nbp)
+    return a
 
 def reduccionSumas2(A, S:np.ndarray, w:int, h:int) :
-    pass
+    H, W = A.shape
+    ph, pw = H // h, W // w
+    sred = S[0:H+1:ph, 0:W+1:pw]
+    dc = sred[:, 1:] - sred[:,:-1]
+    dl = dc[1:, :] - dc[:-1, :]
+    d = dl / (ph * pw)
+    return np.uint8(d.round())
 
 def listaRGBtoGris(A):
     pass
@@ -133,7 +147,7 @@ np.divide(a,b) #a/b vale 0.1
 
 
 #################################### Respuesta 4 #####################################
-print(gris(pixelBlanco))  
+gris(pixelBlanco) #Click en "gris" y luego F12 para revisar la función    
 
 
 "1.2 Imágenes"
