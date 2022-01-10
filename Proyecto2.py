@@ -39,7 +39,7 @@ def cargar_imagenes(route):
     print("Se cargaron ", len(imagenes), "imagenes")
     return imagenes
 
-def gris (p:pixel) -> np.uint8:
+def gris (p) -> np.uint8:
     promedio = np.mean(p.shape)
     resultado = np.uint8(promedio)
     if resultado==0:
