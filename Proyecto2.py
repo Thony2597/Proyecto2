@@ -55,7 +55,7 @@ def conversion(imagen):
             img_to_Gray[i,e]=luminancia
     return img_to_Gray
 
-def vecinoProximo(A,w,h):
+def vecinoProximo(A: np.ndarray, w: int, h: int):
     new_img = [[] for _ in range(h)]
     Zh = h / int(np.shape(A)[0])
     Zv = w / int(np.shape(A)[1])
