@@ -42,34 +42,29 @@ def cargar_imagenes(route):
 def gris (p) -> np.uint8:
     promedio = np.mean(p.shape)
     resultado = np.uint8(promedio)
-    if resultado==0:
-        return np.uint8(0)
-    if resultado<=39:
-        return np.uint8(26)
-    if resultado<=65:
-        return np.uint8(52)
-    if resultado<=90:
-        return np.uint8(77)
-    if resultado<=115:
-        return np.uint8(102)
-    if resultado<=141:
-        return np.uint8(128)
-    if resultado<=167:
-        return np.uint8(153)
-    if resultado<=192:
-        return np.uint8(180)
-    if resultado<=218:
-        return np.uint8(204)
-    if resultado<=254:
-        return np.uint8(231)
-    if resultado==255:
-        return np.uint8(255)
+    return resultado
 
-def conversion(a):
-    
+def conversion(imagen):
+    img_to_Gray= np.zeros((int(np.shape(imagen)[0]),int(np.shape(imagen)[1])))
+    for i in (range(np.shape(imagen)[0])):
+        for e in (range(np.shape(imagen)[1])):
+            luminancia=0
+            for j in (range(np.shape(imagen)[2])):
+                grises = gris(np.ndarray(imagen[i,e,j], dtype=np.uint8))
+                luminancia = luminancia + grises
+            img_to_Gray[i,e]=luminancia
+    return img_to_Gray
 
 def vecinoProximo(A,w,h):
-    pass
+    new_img = [[] for _ in range(h)]
+    Zh = h / int(np.shape(A)[0])
+    Zv = w / int(np.shape(A)[1])
+    for x in range(h):
+        for y in range(w):
+            x0 = int(x / Zh)
+            y0 = int(y / Zv)
+            new_img[x].append(list(A[x0][y0])) 
+    return new_img
 
 def mediaLocal(A : np.ndarray, w : int, h :int):
     a = np.empty((h,w), np.uint8)
@@ -153,4 +148,18 @@ gris(pixelBlanco) #Click en "gris" y luego F12 para revisar la función
 "1.2 Imágenes"
 
 #################################### Respuesta 5 #####################################
+imagen = img.imread('imagen.jpg')
+conversion(imagen) #Click en "conversion" y luego F12 para revisar la función
 
+
+"II. Redimensión de imágenes"
+
+"2.1 Algoritmo de Interpolación por el vecino más cercano"
+
+#################################### Respuesta 6 #####################################
+vecinoProximo(imagen, 250, 175) #Click en "vecinoProximo" y luego F12 para revisar la función
+
+
+"2.2 Algoritmo de reducción pormedias locales"
+
+#################################### Respuesta 7 #####################################
