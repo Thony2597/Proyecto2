@@ -41,25 +41,27 @@ def cargar_imagenes(route):
 
 def gris(p):
     #Calculamos el promedio
-    prom=np.mean([p[0][0][0],p[0][0][1], p[0][0][2]])
+    prom=np.mean([p[0],p[1], p[2]])
     num=int(round(prom))
     #Retornamos el número que nos permitirá convertir
     #a escala de grises
     return num
 
 def conversion(a):
-    img_to_Gray= np.zeros((int(np.shape(a)[0]),int(np.shape(a)[1])))
+    #creo una matriz de ceros para convertirla en mi imagen en escala de grises
+    img_to_Gray= np.zeros([int(np.shape(a)[0]),int(np.shape(a)[1])], dtype=np.uint8)
     #recorro la filas
     for i in range(np.shape(a)[0]):
         #recorro columnas
         for e in range(np.shape(a)[1]):
-            #guardo variable temporal para almacenar pixeles
-            px=np.array([[[a[i][e][0],a[i][e][1],a[i][e][2]]]], np.uint8)
-            #convierto cada pixel a gris individualmente
+            #tomo el pixel a modificar
+            px=np.array([a[i][e][0], a[i][e][1], a[i][e][2]], np.uint8)
+            #convierto a gris
             gray=gris(px)
-            #reescribo el valor de cada pixel en escala de grises dentro de la matriz vacía
-            img_to_Gray[i][e]=int(round(gray))
-    return img_to_Gray
+            #guardo el pixel modificado en la matriz de salida
+            img_to_Gray[i][e]=np.uint8(gray)
+    #retorno la imagen con elementos enteros de 8 bits
+    return img_to_Gray.astype(np.uint8)
 
 def vecinoProximo(A: np.ndarray, w: int, h: int):
     new_img = [[] for _ in range(h)]
