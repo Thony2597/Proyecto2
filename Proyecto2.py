@@ -136,7 +136,7 @@ def construirMosaico(source, vignettes, p):
 
 
 #################################### Respuesta 2 #####################################
-pixelBlanco = np.ndarray([255, 255, 255], dtype=np.uint8) #Pixel de color blanco
+pixelBlanco = np.array([255, 255, 255], dtype=np.uint8) #Pixel de color blanco
 
 
 #################################### Respuesta 3 #####################################       
