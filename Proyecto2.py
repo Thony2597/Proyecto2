@@ -44,7 +44,7 @@ def gris(p):
     num=int(round(prom))
     #Retornamos el número que nos permitirá convertir
     #a escala de grises
-    return num
+    return np.uint8(num)
 
 def conversion(a):
     #creo una matriz de ceros para convertirla en mi imagen en escala de grises
@@ -130,7 +130,7 @@ def escogerMiniatura(bloque: np.ndarray, miniaturas ):
 def construirMosaico(source, vignettes, p):    
     pass
 
-"I. Pixeles e imagenes"
+"Parte I: Pixeles e imagenes"
 
 
 "1.1 Pixeles"
@@ -164,7 +164,7 @@ imagen = img.imread('imagen.jpg')
 conversion(imagen) #Click en "conversion" y luego F12 para revisar la función
 
 
-"II. Redimensión de imágenes"
+"Parte II: Redimensión de imágenes"
 
 "2.1 Algoritmo de Interpolación por el vecino más cercano"
 
@@ -174,4 +174,46 @@ vecinoProximo(imagen, 250, 175) #Click en "vecinoProximo" y luego F12 para revis
 
 "2.2 Algoritmo de reducción pormedias locales"
 
-#################################### Respuesta 7 #####################################
+##################################### Respuesta 7 #####################################
+
+
+"2.3 Optimizacion de la reducción por medias locales"
+
+##################################### Respuesta 8 #####################################
+
+
+##################################### Respuesta 9 #####################################
+
+
+#################################### Respuesta 10 #####################################
+
+
+"Parte III: Preparando el banco de imágenes"
+
+#################################### Respuesta 11 #####################################
+
+
+#################################### Respuesta 12 #####################################
+
+
+#################################### Respuesta 13 #####################################
+
+
+"Parte IV: Posicionamiento de miniaturas"
+
+#################################### Respuesta 14 #####################################
+
+
+#################################### Respuesta 15 #####################################
+
+
+#################################### Respuesta 16 #####################################
+
+
+#################################### Respuesta 17 #####################################
+
+
+#################################### Respuesta 18 #####################################
+
+
+#################################### Respuesta 19 #####################################
