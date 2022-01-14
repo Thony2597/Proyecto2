@@ -120,11 +120,18 @@ def L1(a,b):
     pass
 
 def escogerMiniatura(bloque: np.ndarray, miniaturas ):
-    for l in range(np.shape(miniaturas)):
-        if L1(bloque, miniaturas[l])<L1(bloque, miniaturas[-1]):
-            min_selec=miniaturas[l]
+    lista_comp=[]
+    for l in range(len(miniaturas)):
+        lista_comp=lista_comp.append(L1(bloque, miniaturas[l]))
+    num_selec=lista_comp[-1]
+    ind=-1
+    for p in range(len(lista_comp)):
+        if lista_comp[p]<num_selec:
+            num_selec=lista_comp[p]
+            ind=p
         else:
-            min_selec=miniaturas[-1]
+            continue
+    min_selec=miniaturas[ind]
     return min_selec
 
 def construirMosaico(source, vignettes, p):    
