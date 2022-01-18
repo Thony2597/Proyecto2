@@ -204,7 +204,7 @@ vecinoProximo(imagen, 250, 175) #Click en "vecinoProximo" y luego F12 para revis
 
 
 #################################### Respuesta 13 #####################################
-
+# 75x100 cada miniatura y 3750x5000 el mosaico
 
 "Parte IV: Posicionamiento de miniaturas"
 
